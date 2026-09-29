@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WSI Office — Design Queue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img class="brand-logo" src="img/wsi-logo.jpg" alt="Water Services Inc." />
+        <div>
+          <h1>Office design queue</h1>
+          <p>Customer requests write to WSI_Customer_Submissions.xlsx (Excel / Access).</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <a class="btn-ghost" href="/api/database.xlsx">Download Excel database</a>
+        <a class="btn-ghost" href="customer.html">Customer page</a>
+        <button class="btn-gold" id="btn-print" type="button">Print design</button>
+      </div>
+    </div>
+  </header>
+  <main class="wrap office-layout">
+    <aside class="card">
+      <h2>Submissions</h2>
+      <div class="card-body" id="queue">Loading…</div>
+    </aside>
+    <section class="card">
+      <h2>Recommended train, COG, and containers</h2>
+      <div class="card-body" id="mount"><p class="hint">Select a request at left.</p></div>
+    </section>
+  </main>
+  <script src="engine.js"></script>
+  <script src="office.js"></script>
+</body>
+</html>

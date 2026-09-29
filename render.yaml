@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: wsi-waste-stream-designer
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"
+      - key: WSI_SMTP_HOST
+        sync: false
+      - key: WSI_SMTP_PORT
+        value: "587"
+      - key: WSI_SMTP_USER
+        sync: false
+      - key: WSI_SMTP_PASS
+        sync: false
+      - key: WSI_FROM
+        sync: false

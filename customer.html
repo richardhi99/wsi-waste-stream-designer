@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Request | Water Services Inc.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img class="brand-logo" src="img/wsi-logo.jpg" alt="Water Services Inc." />
+        <div>
+          <h1>Treatment request</h1>
+          <p>Tell us about the waste stream and site. We size COG aeration and, if you want it, a containerized plant.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" style="grid-template-columns:1fr">
+    <section>
+      <article class="card">
+        <h2>Your contact</h2>
+        <div class="card-body grid-2">
+          <div><label for="project">Project name</label><input id="project" type="text" placeholder="Site or project" /></div>
+          <div><label for="client">Company / site</label><input id="client" type="text" /></div>
+          <div><label for="designer">Your name *</label><input id="designer" type="text" required /></div>
+          <div><label for="email">Email *</label><input id="email" type="email" required placeholder="you@company.com" /></div>
+          <div><label for="phone">Phone</label><input id="phone" type="tel" /></div>
+          <div><label for="date">Date</label><input id="date" type="date" /></div>
+          <div style="grid-column:1/-1"><label for="note">Notes</label><textarea id="note" placeholder="Permit, odor complaints, existing lagoon size, power available…"></textarea></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Waste stream and flow</h2>
+        <div class="card-body grid-2">
+          <div>
+            <label for="stream">Waste-stream class</label>
+            <select id="stream">
+              <option>Municipal sewage</option><option>Greywater</option><option>Stormwater runoff</option>
+              <option>Food & beverage</option><option>Oil & gas produced water</option>
+              <option>Metal finishing</option><option>Textile / dye</option><option>Landfill leachate</option>
+              <option>Cooling tower blowdown</option><option>Agricultural / CAFO</option>
+              <option>Pharmaceutical</option><option>Pulp & paper</option><option>Custom / other</option>
+            </select>
+          </div>
+          <div>
+            <label for="goal">Discharge / reuse goal</label>
+            <select id="goal">
+              <option>Surface water NPDES</option><option>EPA secondary 30/30</option>
+              <option>Nutrient-limited receiving water</option><option>Unrestricted urban reuse</option>
+              <option>Restricted irrigation reuse</option><option>Industrial reuse / boiler</option>
+              <option>Groundwater recharge</option><option>Deep-well injection</option>
+              <option>Sewer discharge / pretreatment</option><option>Zero liquid discharge</option>
+            </select>
+          </div>
+          <div><label for="adf">Average daily flow (MGD)</label><input id="adf" type="number" min="0" step="0.001" value="1" /></div>
+          <div><label for="pf">Peaking factor</label><input id="pf" type="number" min="1" step="0.1" value="3" /></div>
+          <div><label for="temp">Wastewater temperature (°C)</label><input id="temp" type="number" step="0.1" value="15" /></div>
+          <div><label class="check" style="margin-top:22px"><input id="load_preset" type="checkbox" checked /> Load typical untreated quality for this class</label></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Tanks and containerized plant</h2>
+        <div class="card-body">
+          <div class="grid-2">
+            <div>
+              <label for="tank_type">Tank / plant type</label>
+              <select id="tank_type">
+                <option>ISO containerized plant</option>
+                <option>Rectangular tank</option>
+                <option>Circular / round</option>
+                <option>Existing lagoon / pond</option>
+              </select>
+            </div>
+            <div>
+              <label for="aerator">Aeration</label>
+              <select id="aerator">
+                <option selected>COG (Water Services default)</option>
+                <option>Conventional blowers</option>
+              </select>
+            </div>
+            <div><label for="min_depth">Minimum water depth (ft)</label><input id="min_depth" type="number" min="2" step="0.1" value="4" /></div>
+            <div><label for="max_depth">Maximum water depth (ft)</label><input id="max_depth" type="number" min="3" step="0.1" value="8" /></div>
+          </div>
+          <p class="hint" style="margin-top:12px">Allowed intermodal boxes (feet). The office design will use one box or several, depending on volume and skids.</p>
+          <div class="iso-grid">
+            <label class="check"><input id="iso_10_8_8.5" type="checkbox" checked /> 10 × 8 × 8.5</label>
+            <label class="check"><input id="iso_10_8_9.5" type="checkbox" checked /> 10 × 8 × 9.5</label>
+            <label class="check"><input id="iso_20_8_8.5" type="checkbox" checked /> 20 × 8 × 8.5</label>
+            <label class="check"><input id="iso_20_8_9.5" type="checkbox" checked /> 20 × 8 × 9.5</label>
+            <label class="check"><input id="iso_40_8_8.5" type="checkbox" checked /> 40 × 8 × 8.5</label>
+            <label class="check"><input id="iso_40_8_9.5" type="checkbox" checked /> 40 × 8 × 9.5</label>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Influent and desired effluent</h2>
+        <div class="card-body" style="overflow-x:auto">
+          <table>
+            <thead><tr><th>Parameter</th><th>Influent</th><th>Desired effluent</th><th>Unit</th><th>Limit applies?</th></tr></thead>
+            <tbody>
+              <tr><td class="param">BOD5</td><td><input id="bod_in" type="number" step="any" value="220" /></td><td><input id="bod_out" type="number" step="any" value="30" /></td><td class="unit">mg/L</td><td><label class="check"><input id="bod_lim" type="checkbox" checked /> Yes</label></td></tr>
+              <tr><td class="param">COD</td><td><input id="cod_in" type="number" step="any" value="500" /></td><td><input id="cod_out" type="number" step="any" value="60" /></td><td class="unit">mg/L</td><td><label class="check"><input id="cod_lim" type="checkbox" checked /> Yes</label></td></tr>
+              <tr><td class="param">TSS</td><td><input id="tss_in" type="number" step="any" value="220" /></td><td><input id="tss_out" type="number" step="any" value="30" /></td><td class="unit">mg/L</td><td><label class="check"><input id="tss_lim" type="checkbox" checked /> Yes</label></td></tr>
+              <tr><td class="param">TDS</td><td><input id="tds_in" type="number" step="any" value="500" /></td><td><input id="tds_out" type="number" step="any" value="1000" /></td><td class="unit">mg/L</td><td><label class="check"><input id="tds_lim" type="checkbox" /> Yes</label></td></tr>
+              <tr><td class="param">Oil & grease</td><td><input id="og_in" type="number" step="any" value="30" /></td><td><input id="og_out" type="number" step="any" value="10" /></td><td class="unit">mg/L</td><td><label class="check"><input id="og_lim" type="checkbox" checked /> Yes</label></td></tr>
+              <tr><td class="param">Total nitrogen</td><td><input id="tn_in" type="number" step="any" value="40" /></td><td><input id="tn_out" type="number" step="any" value="10" /></td><td class="unit">mg/L as N</td><td><label class="check"><input id="tn_lim" type="checkbox" checked /> Yes</label></td></tr>
+              <tr><td class="param">Ammonia (NH3-N)</td><td><input id="nh3_in" type="number" step="any" value="25" /></td><td><input id="nh3_out" type="number" step="any" value="2" /></td><td class="unit">mg/L as N</td><td><label class="check"><input id="nh3_lim" type="checkbox" checked /> Yes</label></td></tr>
+              <tr><td class="param">Total phosphorus</td><td><input id="tp_in" type="number" step="any" value="8" /></td><td><input id="tp_out" type="number" step="any" value="1" /></td><td class="unit">mg/L as P</td><td><label class="check"><input id="tp_lim" type="checkbox" checked /> Yes</label></td></tr>
+              <tr><td class="param">pH</td><td><input id="ph_in" type="number" step="any" value="7.2" /></td><td><input id="ph_out" type="number" step="any" value="7" /></td><td class="unit">s.u.</td><td><label class="check"><input id="ph_lim" type="checkbox" checked /> Yes</label></td></tr>
+              <tr><td class="param">Fecal coliform</td><td><input id="fc_in" type="number" step="any" value="10000000" /></td><td><input id="fc_out" type="number" step="any" value="200" /></td><td class="unit">MPN/100 mL</td><td><label class="check"><input id="fc_lim" type="checkbox" checked /> Yes</label></td></tr>
+              <tr><td class="param">Turbidity</td><td><input id="turb_in" type="number" step="any" value="150" /></td><td><input id="turb_out" type="number" step="any" value="5" /></td><td class="unit">NTU</td><td><label class="check"><input id="turb_lim" type="checkbox" /> Yes</label></td></tr>
+              <tr><td class="param">Total metals</td><td><input id="met_in" type="number" step="any" value="0.5" /></td><td><input id="met_out" type="number" step="any" value="0.5" /></td><td class="unit">mg/L</td><td><label class="check"><input id="met_lim" type="checkbox" /> Yes</label></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Preferences</h2>
+        <div class="card-body grid-2">
+          <div><label for="bio_pref">Biological family</label>
+            <select id="bio_pref"><option>Auto-select</option><option>Conventional activated sludge</option><option>Extended aeration</option><option>Oxidation ditch</option><option>SBR</option><option>MBBR</option><option>MLE BNR</option><option>Bardenpho / A2O</option><option>MBR</option></select></div>
+          <div><label for="dis_pref">Disinfection</label>
+            <select id="dis_pref"><option>UV</option><option>Chlorine / hypochlorite</option><option>Ozone</option><option>UV + chlorine residual</option><option>None</option></select></div>
+          <div><label for="pchem">P-removal chemistry</label>
+            <select id="pchem"><option>Alum</option><option>Ferric chloride</option><option>Auto (bio-P first)</option><option>None</option></select></div>
+          <div><label for="redun">Redundancy</label>
+            <select id="redun"><option>N+1 duty/standby</option><option>N duty only</option><option>2 x 50% trains</option></select></div>
+          <div><label for="foot">Footprint / energy</label>
+            <select id="foot"><option>Balanced</option><option>Minimize footprint</option><option>Minimize energy</option><option>Minimize operator skill</option></select></div>
+          <div><label for="ana_pref">Anaerobic pretreatment if high COD?</label>
+            <select id="ana_pref"><option>Auto</option><option>Yes</option><option>No</option></select></div>
+          <div><label for="force_filt">Force media filtration?</label>
+            <select id="force_filt"><option>No</option><option>Yes</option></select></div>
+        </div>
+      </article>
+
+      <p id="form-error" class="note" style="display:none"></p>
+      <div style="display:flex;gap:10px;margin:18px 0 8px">
+        <button class="btn-gold" id="btn-submit" type="button">Submit request</button>
+        <button class="btn-outline" id="btn-reset" type="button">Reset example</button>
+      </div>
+      <p class="footer-note">Water Services, Inc. · 372 South 900 West, Provo, Utah 84601 · +1-801-705-4567 · info@water-services.us</p>
+    </section>
+  </main>
+  <script src="engine.js"></script>
+  <script src="customer.js"></script>
+</body>
+</html>

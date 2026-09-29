@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank you | Water Services Inc.</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img class="brand-logo" src="img/wsi-logo.jpg" alt="Water Services Inc." />
+        <div>
+          <h1>Request received</h1>
+          <p>Concentrated Oxygen Generator aeration</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="thanks">
+    <img class="brand-logo" src="img/wsi-logo.jpg" alt="Water Services Inc." />
+    <h1>Thank you</h1>
+    <p>We received your waste-stream information.</p>
+    <p><strong>Water Services Inc will get back to you.</strong></p>
+    <p class="hint" id="mail-line"></p>
+    <p class="wsi-foot">372 South 900 West, Provo, Utah 84601<br>+1-801-705-4567 · info@water-services.us · www.water-services.us</p>
+    <p><a class="btn-outline" href="customer.html">Submit another site</a></p>
+  </div>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const email = q.get("email") || "the address you entered";
+    document.getElementById("mail-line").textContent =
+      "A confirmation note is on its way to " + email + ". If you do not see it, check spam or call the shop.";
+  </script>
+</body>
+</html>
